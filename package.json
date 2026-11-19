@@ -1,0 +1,19 @@
+{
+  "name": "hamsa",
+  "version": "1.0.0",
+  "description": "همسة: تطبيق مراسلة بنفسجي بلا رقم هاتف",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node --test tests/logic.test.js tests/static.test.js",
+    "test:e2e": "node --test tests/e2e.test.js",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

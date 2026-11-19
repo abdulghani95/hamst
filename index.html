@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>همسة</title>
+  <meta name="description" content="تطبيق مراسلة بنفسجي بلا رقم هاتف: هوية باسم مستخدم فقط، رسائل تتلاشى، كبسولات زمنية، رسائل سرية ووضع الشبح.">
+  <meta name="theme-color" content="#6a35ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#110c1f" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12l16-8-6 17-3-7z"/><path d="M11 14l9-10"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 012 2v8a2 2 0 01-2 2h-7l-5 4v-4H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7"/><path d="M12 9.5v4l2.5 1.5M9.5 3h5"/></symbol>
+    <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3v3.5L12 12l-5 5.5V21M17 3v3.5L12 12l5 5.5V21"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c.8 3.6 5 5 5 10a5 5 0 01-10 0c0-2 .9-3.2 2-4.2 0 2 .9 3 2 3 0-3-1-5 1-8.8z"/></symbol>
+    <symbol id="i-ghost" viewBox="0 0 24 24"><path d="M5 20V10a7 7 0 0114 0v10l-2.5-2-2.3 2-2.2-2-2.2 2-2.3-2z"/><path d="M9.5 11h.01M14.5 11h.01"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></symbol>
+    <symbol id="i-id" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></symbol>
+    <symbol id="i-aura" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="8.5"/></symbol>
+  </defs>
+</svg>
+
+<!-- ───────── Sign-up: username only ───────── -->
+<section id="auth" class="auth-wrap" aria-labelledby="authTitle">
+  <div class="auth">
+    <div class="auth-main">
+      <div class="brand brand-lg">
+        <svg class="logo" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="3" y="4" width="34" height="27" rx="11" fill="currentColor"/>
+          <path d="M13 30l-4 7 11-7z" fill="currentColor"/>
+          <path d="M12.5 17.5c2-3 4.2-3 6 0s4 3 6 0" fill="none" stroke="var(--logo-ink)" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">همسة</span>
+      </div>
+      <h1 id="authTitle">مراسلة بلا رقم هاتف</h1>
+      <p class="lead">هويتك اسم مستخدم فقط. رسائلك تبقى بالمدة التي تختارها، وتختفي حين تقرر.</p>
+
+      <form id="authForm" class="card form" novalidate>
+        <label for="nameInput">الاسم الظاهر</label>
+        <input id="nameInput" name="name" type="text" autocomplete="nickname" maxlength="24" value="نور" required>
+
+        <label for="handleInput">اسم المستخدم</label>
+        <div class="at-field">
+          <span class="at" aria-hidden="true">@</span>
+          <input id="handleInput" name="handle" type="text" dir="ltr" inputmode="text" autocomplete="username"
+                 autocapitalize="none" spellcheck="false" maxlength="21" value="nour.violet" required aria-describedby="authErr">
+        </div>
+        <p id="authErr" class="err" role="alert" hidden></p>
+
+        <button id="authSubmit" class="btn primary" type="submit">أنشئ هويتي</button>
+        <p class="fine">لا نطلب رقم هاتف ولا بريدًا. نولّد لك رمز استعادة سريًا بدلًا منهما.</p>
+      </form>
+    </div>
+
+    <ul class="feats" aria-label="مميزات همسة">
+      <li><svg class="i"><use href="#i-id"/></svg><div><b>بلا رقم ولا بريد</b><span>هويتك @اسم_مستخدم ورمز استعادة، ولا شيء آخر.</span></div></li>
+      <li><svg class="i"><use href="#i-timer"/></svg><div><b>رسائل تتلاشى</b><span>تختار المدة، فتختفي الرسالة من المحادثة.</span></div></li>
+      <li><svg class="i"><use href="#i-hourglass"/></svg><div><b>كبسولة زمنية</b><span>ترسل الآن، وتُفتح في الوقت الذي تحدده.</span></div></li>
+      <li><svg class="i"><use href="#i-flame"/></svg><div><b>رسائل سرية تُحرق</b><span>تظهر مموّهة وتُقرأ مرة واحدة ثم تحترق.</span></div></li>
+      <li><svg class="i"><use href="#i-ghost"/></svg><div><b>وضع الشبح</b><span>اقرأ واكتب دون أن يظهر أثرك للآخرين.</span></div></li>
+      <li><svg class="i"><use href="#i-aura"/></svg><div><b>هالة المزاج</b><span>حلقة ملونة حول صورتك تحكي كيف تشعر اليوم.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────── Main app ───────── -->
+<div id="main" class="main" data-view="list" hidden>
+  <aside class="list" aria-label="المحادثات">
+    <header class="lh">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="3" y="4" width="34" height="27" rx="11" fill="currentColor"/>
+          <path d="M13 30l-4 7 11-7z" fill="currentColor"/>
+          <path d="M12.5 17.5c2-3 4.2-3 6 0s4 3 6 0" fill="none" stroke="var(--logo-ink)" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">همسة</span>
+      </div>
+      <button id="meBtn" class="av-btn" type="button" aria-label="ملفي الشخصي والإعدادات"></button>
+    </header>
+    <div class="search">
+      <svg class="i"><use href="#i-search"/></svg>
+      <input id="q" type="search" placeholder="ابحث أو أضف @اسم_مستخدم" autocomplete="off" aria-label="بحث أو إضافة جهة اتصال">
+    </div>
+    <div id="rows" class="rows" role="list"></div>
+  </aside>
+
+  <section class="chat" aria-label="المحادثة">
+    <div id="chatEmpty" class="empty" hidden>
+      <svg class="i big"><use href="#i-chat"/></svg>
+      <p>اختر محادثة، أو أضف صديقًا باسم مستخدمه.</p>
+    </div>
+
+    <div id="chatBody" class="chatbody" hidden>
+      <header class="ch">
+        <button id="backBtn" class="icon-btn back" type="button" aria-label="رجوع إلى المحادثات"><svg class="i"><use href="#i-back"/></svg></button>
+        <div id="chAv"></div>
+        <div class="ch-text">
+          <b id="chName"></b>
+          <span id="chStatus" class="status"></span>
+        </div>
+      </header>
+      <div id="ghostBanner" class="banner" hidden>
+        <svg class="i"><use href="#i-ghost"/></svg>
+        <span>وضع الشبح مفعّل: لا يرون أنك تكتب ولا أنك قرأت.</span>
+      </div>
+      <div id="msgs" class="msgs" role="log" aria-live="polite" aria-label="الرسائل"></div>
+      <div class="composer">
+        <div id="modes" class="modes" role="group" aria-label="نوع الرسالة"></div>
+        <div id="opts" class="opts"></div>
+        <form id="sendForm" class="inputrow" autocomplete="off">
+          <input id="msg" type="text" enterkeyhint="send" placeholder="اكتب رسالة" aria-label="نص الرسالة" autocomplete="off">
+          <button id="sendBtn" class="send" type="submit" aria-label="إرسال"><svg class="i flip"><use href="#i-send"/></svg></button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ───────── Profile sheet ───────── -->
+<div id="scrim" class="scrim" hidden>
+  <div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1"></div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
